@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import post_list, create_post, update_post,delete_post,filter_by_user, search
+from main.views import post_list, create_post, update_post,delete_post,filter_by_user, search,toogle_like
 from reviews.views import CommentViewsSet
 from rest_framework.routers import DefaultRouter
 
+
 router = DefaultRouter()
 router.register('comments', CommentViewsSet)
+
 
 
 """===============swagger dics========"""
@@ -48,7 +50,9 @@ urlpatterns = [
     path('post-delete/<int:id>/', delete_post),
     path('post-filter/<int:u_id>/', filter_by_user),
     path('post-search/',search),
-    path('', include(router.urls))
+    path('post-like/',toogle_like),
+    path('', include(router.urls)),
+
 
 
 ]

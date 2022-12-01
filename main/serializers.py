@@ -12,5 +12,6 @@ class PostSerializer(ModelSerializer):
         rep['author'] = instance.author.username
         comments = instance.comments.all()
         rep['comments']= CommentSerializer(comments, many=True).data
+        rep['likes']=instance.likes.count()
         return rep
 
